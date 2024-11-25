@@ -24,49 +24,61 @@ class CategoryController extends Controller
     // Store a new category
     public function store(Request $request)
     {
-        $request->validate([
-            'catName' => 'required|max:255',
-            'catDescription' => 'required|max:255'
+        // Validate the incoming data
+        $validatedData = $request->validate([
+            'catName' => 'required|max:255',         // Category name should not exceed 255 characters
+            'catDescription' => 'required|max:255',  // Category description should not exceed 255 characters
         ]);
 
-        Category::create([
-            'catName' => $request->catName,
-            'catDescription' => $request->catDescription
-        ]);
+        // Create the new category
+        Category::create($validatedData);
 
-        return redirect()->route('category.index')->with('status', 'Category added successfully');
+        // Redirect back with success message
+        return back()->with('status','added Successfuly');
     }
 
     // Show the form to edit an existing category
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id); // Find the category by ID or throw 404
+        // Find the category by ID or throw 404 error if not found
+
         return view('admin.category.edit', compact('category'));
     }
-
-    // Update an existing category
-    public function update(Request $request, $id)
+    public function show(Category $category)
     {
-        $request->validate([
+        //
+    }
+    // Update an existing category
+    public function update(Request $request, Category $category)
+    {
+        // Validate the incoming data
+        $validatedData=$request->validate([
             'catName' => 'required|max:255',
             'catDescription' => 'required|max:255'
         ]);
 
-        $category = Category::findOrFail($id);
-        $category->update([
-            'catName' => $request->catName,
-            'catDescription' => $request->catDescription
-        ]);
+       
+        $category->update($validatedData);
 
-        return redirect()->route('category.index')->with('status', 'Category updated successfully');
+        // Redirect back with success message
+        return back()->with('status', 'Category updated successfully');
     }
 
     // Delete a category
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
+        // Find the category by ID or throw 404 error
+
+        // Delete the category
         $category->delete();
 
-        return redirect()->route('category.index')->with('status', 'Category deleted successfully');
+        // Redirect back with success message
+        return back()->with('status','deleted  Successfuly');
+    }
+    public function forceDelete($id)
+    {
+        $contact_us = Contact_us::withTrashed()->findOrFail($id);
+        $contact_us->forceDelete(); // Permanently delete the record
+        return back()->with('success', 'Contact permanently deleted!');
     }
 }

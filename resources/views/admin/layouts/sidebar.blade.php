@@ -59,12 +59,12 @@
 									<p>Copouns</p>
 								</a>
 							</li>
-							<li class="nav-item   text-dark">
+							<!-- <li class="nav-item   text-dark">
 								<a href="users.html" class="nav-link">
 									<i class="nav-icon  fas fa-users"></i>
 									<p>Users</p>
 								</a>
-							</li>
+							</li> -->
 							<li class="nav-item   text-dark">
 								<a href="{{route('contact.index')}}" class="nav-link">
 									<i class="nav-icon  far fa-file-alt"></i>

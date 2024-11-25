@@ -29,13 +29,13 @@
                                     @csrf
 										<div class="mb-4">
 											<label for="name">Name</label>
-											<input type="text" name="name" id="name" class="form-control" placeholder="Name">	
+											<input type="text" name="catName" id="name" class="form-control" placeholder="Name">	
 										</div>
 									</div>
 									<div class="col-12">
 										<div class="mb-4">
 											<label for="email">Discription</label>
-											<input type="text" name="decs" id="decs" class="form-control" placeholder="Discription">	
+											<input type="text" name="catDescription" id="decs" class="form-control" placeholder="Discription">	
 										</div>
 									</div>									
 								</div>

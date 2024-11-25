@@ -50,19 +50,46 @@ class CopounController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Copoun $copoun)
-    {
-        return view('admin.copoun.edit');
+    {    
+        return view('admin.copoun.edit', compact('copoun'));
+      
 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Copoun $copoun)
-    {
-        Copoun::update($data);
-        return back()->with('status','Updated Successfuly');
+    public function update(Request $request, $id)
+{
+    $data = $request->validate([
+        'name' => 'required|string',
+        'discount' => 'required|numeric',
+        'expiry_date' => 'required|date',
+    ]);
+
+    if ($request->hasFile('image')) {
+        // معالجة رفع الصورة
+        $image = $request->file('image');
+        $newImageName = time() . '-' . $image->getClientOriginalName();
+        $image->storeAs('public/copouns', $newImageName);
+
+        // تحديث مسار الصورة
+        $data['image'] = $newImageName;
+
+        // حذف الصورة القديمة (إذا لزم الأمر)
+        $copoun = Copoun::findOrFail($id);
+        if ($copoun->image) {
+            Storage::delete('public/copouns/' . $copoun->image);
+        }
     }
+
+    // تحديث السجل
+    $copoun = Copoun::findOrFail($id);
+    $copoun->update($data);
+
+    return back()->with('status', 'Updated Successfully');
+}
+
 
     /**
      * Remove the specified resource from storage.

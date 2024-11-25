@@ -48,14 +48,12 @@
                                 <td>{{$contact_us->message }}</td>
 
                                 <td>
-								<form action="{{ route('contact.destroy', $contact_us->id) }}" method="post" id="delete_form_{{ $contact_us->id }}" class="d-inline">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="btn btn-danger">Delete</button>
-</form>
-
-
-                                </td>
+                                <form action="{{ route('contact.forceDelete', $contact_us->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+                                </td>   
                             </tr>
                             @endforeach
                         </tbody>

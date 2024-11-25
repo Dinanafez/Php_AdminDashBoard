@@ -34,17 +34,24 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        $data=$request->validated();
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
+            'image_url' => 'required|mimes:png,jpg',
+            'quantity' => 'required|integer',
+        ]);
         //image uploading 1-get image 2-change its current name
         $image= $request->image_url;
         //change it current name
         $newImageName=time().'-'.$image->getClientOriginalName();
         // mive image to my project 
         $image->storeAs('Products',$newImageName,'public');
-        $data['image_url']=$newImageName;
-        Product::create($data);
+        $validatedData['image_url']=$newImageName;
+        Product::create($validatedData);
         return back()->with('status','added Successfuly');
     }
 
@@ -70,21 +77,42 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $data=$request->validated();
-        if($request->hasFile('image_url')){
-             //image uploading 1-get image 2-change its current name
-        $image= $request->image_url;
-        //change it current name
-        $newImageName=time().'-'.$image->getClientOriginalName();
-        // mive image to my project 
-        $image->storeAs('Products',$newImageName,'public');
-        $data['image_url']=$newImageName;
-        Storage::delete("public/Product/$product->image_url");
+        
+            // التحقق من البيانات
+            $validatedData = $request->validate([
+                'name' => 'required|string',
+                'description' => 'required|string',
+                'price' => 'required|numeric',
+                'category_id' => 'required|exists:categories,id',
+                'image_url' => 'nullable|mimes:png,jpg',
+                'quantity' => 'required|integer',
+            ]);
+        
+            // معالجة الصورة إذا تم رفع صورة جديدة
+            if ($request->hasFile('image_url')) {
+                // الحصول على الصورة
+                $image = $request->file('image_url');
+        
+                // إنشاء اسم جديد للصورة
+                $newImageName = time() . '-' . $image->getClientOriginalName();
+        
+                // تخزين الصورة في المسار المحدد
+                $image->storeAs('Products', $newImageName, 'public');
+        
+                // حذف الصورة القديمة إذا كانت موجودة
+                Storage::delete("public/Products/$product->image_url");
+        
+                // تحديث اسم الصورة في البيانات
+                $validatedData['image_url'] = $newImageName;
+            }
+        
+            // تحديث المنتج باستخدام البيانات
+            $product->update($validatedData);
+        
+            // إعادة التوجيه مع رسالة نجاح
+            return back()->with('status', 'Updated Successfully');
         }
-       
-        Product::update($data);
-        return back()->with('status','Updated Successfuly');
-    }
+        
 
     /**
      * Remove the specified resource from storage.

@@ -8,11 +8,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Support\Facades\Validator;
 use Illuminate\Validation\Factory as ValidationFactory;
+use App\Models\User;
 
 class AdminloginController extends Controller
 {    
     public function index(){
+        $users=User::get();
         return view('admin.login');
+
     }
     public function dashborad(){
         return view('admin.dashborad');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact_us;
 use Illuminate\Http\Request;
 
+
 class ContactUsController extends Controller
 {
     /**
@@ -67,6 +68,15 @@ class ContactUsController extends Controller
      */
     public function destroy(Contact_us $contact_us)
     {
-        //
-    }
+        $contact_us->delete();
+
+       return back()->with('success', 'Contact deleted successfully!');
+}
+public function forceDelete($id)
+{
+    $contact_us = Contact_us::withTrashed()->findOrFail($id);
+    $contact_us->forceDelete(); // Permanently delete the record
+    return back()->with('success', 'Contact permanently deleted!');
+}
+    
 }

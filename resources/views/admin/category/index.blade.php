@@ -48,8 +48,11 @@
                               
                                 <td>
                                     <a href="{{ route('category.edit',$category->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="{{ route('category.destroy', $category->id) }}" class="btn btn-sm btn-danger">Delete</a>
-                                </td>
+                                    <form action="{{ route('category.destroy', ['category' =>$category->id]) }}" method="post" id="delete_form_{{$category->id }}" class="d-inline">
+    @csrf
+    @method('delete')
+    <a href="javascript:document.getElementById('delete_form_{{$category->id}}').submit();" class="btn btn-sm btn-danger">Delete</a>
+</form>                                </td>
                             </tr>
                             @endforeach
                         </tbody>

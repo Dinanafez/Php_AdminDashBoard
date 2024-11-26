@@ -51,7 +51,7 @@
                                 <form action="{{ route('contact.forceDelete', $contact_us->id) }}" method="POST" style="display: inline;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i></button>
                 </form>
                                 </td>   
                             </tr>

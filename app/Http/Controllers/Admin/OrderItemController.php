@@ -34,7 +34,7 @@ class OrderItemController extends Controller
 
         OrderItem::create($validated);
 
-        return redirect()->route('admin.order_items.index')->with('success', 'Order Item created successfully!');
+        return redirect()->route('order_items.index')->with('success', 'Order Item created successfully!');
     }
 
     public function edit(OrderItem $orderItem)
@@ -59,13 +59,13 @@ class OrderItemController extends Controller
 
         $orderItem->update($validated);
 
-        return redirect()->route('admin.order_items.index')->with('success', 'Order Item updated successfully!');
+        return redirect()->route('order_items.index')->with('success', 'Order Item updated successfully!');
     }
 
     public function destroy(OrderItem $orderItem)
     {
         $orderItem->delete();
-        return redirect()->route('admin.order_items.index')->with('success', 'Order Item deleted successfully!');
+        return redirect()->route('order_items.index')->with('success', 'Order Item deleted successfully!');
     }
 
     public function trashed()
@@ -79,7 +79,7 @@ class OrderItemController extends Controller
         $orderItem = OrderItem::onlyTrashed()->findOrFail($id);
         $orderItem->restore();
 
-        return redirect()->route('admin.order_items.trashed')->with('success', 'Order Item restored successfully!');
+        return redirect()->route('order_items.trashed')->with('success', 'Order Item restored successfully!');
     }
 }
 

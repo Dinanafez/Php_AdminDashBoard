@@ -50,11 +50,11 @@
                                 <td>{{ $copoun->expiry_date}}</td>
                             
                                 <td>
-									<a href="{{ route('copoun.edit', ['copoun' =>$copoun->id]) }}" class="btn btn-sm btn-warning">Edit</a>
+									<a href="{{ route('copoun.edit', ['copoun' =>$copoun->id]) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
 									<form action="{{ route('copoun.destroy', ['copoun' => $copoun->id]) }}" method="post" id="delete_form_{{ $copoun->id  }}" class="d-inline">
     @csrf
     @method('delete')
-    <a href="javascript:document.getElementById('delete_form_{{ $copoun->id }}').submit();" class="btn btn-sm btn-danger">Delete</a>
+    <a href="javascript:document.getElementById('delete_form_{{ $copoun->id }}').submit();" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i></a>
 </form>
 
                                 </td>

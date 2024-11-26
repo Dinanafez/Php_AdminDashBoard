@@ -40,35 +40,53 @@
 							</li> -->
 							
 							
-							<!-- <li class="nav-item   text-dark">
-								<a href="#" class="nav-link">
+							<li class="nav-item   text-dark">
+								<a href="{{route('orders.index')}}" class="nav-link">
 									 <i class="nav-icon fas fa-tag"></i> 
-									<i class="fas fa-truck nav-icon"></i>
-									<p>Shipping</p>
+									<p>Orders</p>
 								</a>
 							</li>							 
 							<li class="nav-item   text-dark">
-								<a href="orders.html" class="nav-link">
-									<i class="nav-icon fas fa-shopping-bag"></i>
-									<p>Orders</p>
+								<a href="{{route('order_items.index')}}" class="nav-link">
+									<i class="nav-icon fas  fa-tag"></i>
+									<p>Order Items</p>
 								</a>
-							</li>-->
+							</li>
+							<li class="nav-item   text-dark">
+								<a href="{{route('appointments.index')}}" class="nav-link">
+								<i class=" nav-icon fa-solid fa-calendar-check"></i>
+									<p>Appointment</p>
+								</a>
+							</li>
 							<li class="nav-item   text-dark">
 								<a href="{{route('copoun.index')}}" class="nav-link">
 									<i class="nav-icon  fa fa-percent" aria-hidden="true"></i>
 									<p>Copouns</p>
 								</a>
 							</li>
-							<!-- <li class="nav-item   text-dark">
-								<a href="users.html" class="nav-link">
+							<li class="nav-item   text-dark">
+								<a href="{{route('carts.index')}}" class="nav-link">
+								<i class=" nav-icon fa-solid fa-cart-shopping"></i>
+									<p>Cart</p>
+								</a>
+							</li>
+
+							<li class="nav-item   text-dark">
+								<a href="{{route('users.index')}}" class="nav-link">
 									<i class="nav-icon  fas fa-users"></i>
 									<p>Users</p>
 								</a>
-							</li> -->
+							</li>
 							<li class="nav-item   text-dark">
 								<a href="{{route('contact.index')}}" class="nav-link">
 									<i class="nav-icon  far fa-file-alt"></i>
 									<p>Contact_us</p>
+								</a>
+							</li>	
+							<li class="nav-item   text-dark">
+								<a href="{{route('reviews.index')}}" class="nav-link">
+								<i class="nav-icon fas fa-tag"></i>
+								<p>Review</p>
 								</a>
 							</li>							
 						</ul>

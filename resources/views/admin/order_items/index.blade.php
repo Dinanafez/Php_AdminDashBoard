@@ -54,11 +54,11 @@
                     <td>{{ $item->quantity }}</td>
                     <td>${{ number_format($item->price, 2) }}</td>
                     <td>
-                        <a href="{{ route('order_items.edit', $item) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('order_items.edit', $item) }}" class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i></a>
                         <form action="{{ route('order_items.destroy', $item) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')"> <i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

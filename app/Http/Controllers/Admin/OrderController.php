@@ -28,7 +28,7 @@ public function store(Request $request)
 
     Order::create($validated);
 
-    return redirect()->route('admin.orders.index')->with('success', 'Order created successfully!');
+    return redirect()->route('orders.index')->with('success', 'Order created successfully!');
 }
 
     public function show(Order $order)
@@ -39,7 +39,7 @@ public function store(Request $request)
 
     public function edit(Order $order)
     {
-        return view('admin.orders.edit', compact('order'));
+        return view('orders.edit', compact('order'));
     }
 
     public function update(Request $request, Order $order)
@@ -50,12 +50,12 @@ public function store(Request $request)
 
         $order->update($validated);
 
-        return redirect()->route('admin.orders.index')->with('success', 'Order updated successfully!');
+        return redirect()->route('orders.index')->with('success', 'Order updated successfully!');
     }
 
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect()->route('admin.orders.index')->with('success', 'Order deleted successfully!');
+        return redirect()->route('orders.index')->with('success', 'Order deleted successfully!');
     }
 }

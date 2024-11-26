@@ -24,7 +24,7 @@
                 </div>
                 <div class="card-body table-responsive p-0 text-center">
 
-    <form action="{{ route('admin.appointments.update', $appointment->id) }}" method="POST">
+    <form action="{{ route('appointments.update', $appointment->id) }}" method="POST">
         @csrf
         @method('PUT')
         
@@ -59,7 +59,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('admin.appointments.index') }}" class="btn btn-secondary">Back to List</a>
+        <a href="{{ route('appointments.index') }}" class="btn btn-secondary">Back to List</a>
     </form>
 </div>
 

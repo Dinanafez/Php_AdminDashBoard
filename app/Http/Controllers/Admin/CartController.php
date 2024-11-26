@@ -32,7 +32,7 @@ class CartController extends Controller
         ]);
 
         Cart::create($request->all());
-        return redirect()->route('admin.carts.index')->with('success', 'Cart item created successfully.');
+        return redirect()->route('carts.index')->with('success', 'Cart item created successfully.');
     }
 
     public function show(Cart $cart)
@@ -44,7 +44,7 @@ class CartController extends Controller
     {
         $users = User::all();
         $products = Product::all();
-        return view('admin.carts.edit', compact('cart', 'users', 'products'));
+        return view('carts.edit', compact('cart', 'users', 'products'));
     }
 
     public function update(Request $request, Cart $cart)
@@ -56,12 +56,12 @@ class CartController extends Controller
         ]);
 
         $cart->update($request->all());
-        return redirect()->route('admin.carts.index')->with('success', 'Cart item updated successfully.');
+        return redirect()->route('carts.index')->with('success', 'Cart item updated successfully.');
     }
 
     public function destroy(Cart $cart)
     {
         $cart->delete();
-        return redirect()->route('admin.carts.index')->with('success', 'Cart item deleted successfully.');
+        return redirect()->route('carts.index')->with('success', 'Cart item deleted successfully.');
     }
 }

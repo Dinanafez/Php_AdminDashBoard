@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
+@extends('layouts.app')
       @include('admin.layouts.navbar')
       @include('admin.layouts.sidebar')
         <!-- Content Wrapper. Contains page content -->

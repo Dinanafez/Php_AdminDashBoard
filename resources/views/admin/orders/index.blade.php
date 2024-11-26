@@ -53,14 +53,16 @@
                     <td>{{ $order->user->name }}</td>
                     <td>${{ number_format($order->total_price, 2) }}</td>
                     <td>{{ $order->status }}</td>
-                    <td>{{ $order->created_at->format('Y-m-d') }}</td>
+                    <td>{{ $order->created_at ? $order->created_at->format('Y-m-d') : 'No Date' }}:
+                        </td>
                     <td>
-                        <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-primary">View</a>
-                        <a href="{{ route('admin.orders.edit', $order) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('admin.orders.destroy', $order) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('orders.show', $order) }}" class="btn btn-primary">View</a>
+                        <a href="{{ route('orders.edit', $order) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                        <form action="{{ route('orders.destroy', $order) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">  <i class="fas fa-trash"></i> 
+                            </button>
                         </form>
                     </td>
                 </tr>

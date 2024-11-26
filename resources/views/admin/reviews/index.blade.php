@@ -50,11 +50,11 @@
                     <td>{{ $review->rating }}</td>
                     <td>{{ $review->comment }}</td>
                     <td>
-                        <a href="{{ route('reviews.show', $review->id) }}" class="btn btn-info">View</a>
                         <form action="{{ route('reviews.destroy', $review->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            <button class="btn btn-danger" onclick="return confirm('Are you sure?')">  <i class="fas fa-trash"></i> 
+                            </button>
                         </form>
                     </td>
                 </tr>

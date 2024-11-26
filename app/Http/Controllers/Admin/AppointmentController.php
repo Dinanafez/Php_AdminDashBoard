@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Category;
 use App\Models\Appointment;
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
 {
@@ -26,13 +30,13 @@ class AppointmentController extends Controller
             'last_name' => 'required|string',
             'appointment_date' => 'required|date',
             'appointment_time' => 'required|date_format:H:i',
-            'phone' => 'required|phone',
+            'phone' => 'required',
             'message' => 'nullable|string',
         ]);
 
         Appointment::create($request->all());
 
-        return redirect()->route('admin.appointments.index')->with('success', 'Appointment created successfully.');
+        return redirect()->route('appointments.index')->with('success', 'Appointment created successfully.');
     }
 
     public function show(Appointment $appointment)
@@ -52,20 +56,20 @@ class AppointmentController extends Controller
             'last_name' => 'required|string',
             'appointment_date' => 'required|date',
             'appointment_time' => 'required|date_format:H:i',
-            'phone' => 'required|phone',
+            'phone' => 'required',
             'message' => 'nullable|string',
         ]);
 
         $appointment->update($request->all());
 
-        return redirect()->route('admin.appointments.update', $appointment->id)->with('success', 'Appointment updated successfully.');
+        return redirect()->route('appointments.update', $appointment->id)->with('success', 'Appointment updated successfully.');
     }
 
     public function destroy(Appointment $appointment)
     {
         $appointment->delete();
 
-        return redirect()->route('admin.appointments.index')->with('success', 'Appointment deleted successfully.');
+        return redirect()->route('appointments.index')->with('success', 'Appointment deleted successfully.');
     }
 
     public function restore($id)
@@ -73,7 +77,7 @@ class AppointmentController extends Controller
         $appointment = Appointment::onlyTrashed()->findOrFail($id);
         $appointment->restore();
 
-        return redirect()->route('admin.appointments.index')->with('success', 'Appointment restored successfully.');
+        return redirect()->route('appointments.index')->with('success', 'Appointment restored successfully.');
     }
 
     public function forceDelete($id)
@@ -81,6 +85,6 @@ class AppointmentController extends Controller
         $appointment = Appointment::onlyTrashed()->findOrFail($id);
         $appointment->forceDelete();
 
-        return redirect()->route('admin.appointments.index')->with('success', 'Appointment permanently deleted.');
+        return redirect()->route('appointments.index')->with('success', 'Appointment permanently deleted.');
     }
 }

@@ -25,21 +25,21 @@ class ReviewController extends Controller
     public function destroy(Review $review)
     {
         $review->delete();
-        return redirect()->route('admin.reviews.index')->with('success', 'Review deleted successfully.');
+        return redirect()->route('reviews.index')->with('success', 'Review deleted successfully.');
     }
 
     public function restore($id)
     {
         $review = Review::onlyTrashed()->findOrFail($id);
         $review->restore();
-        return redirect()->route('admin.reviews.index')->with('success', 'Review restored successfully.');
+        return redirect()->route('reviews.index')->with('success', 'Review restored successfully.');
     }
 
     public function forceDelete($id)
     {
         $review = Review::onlyTrashed()->findOrFail($id);
         $review->forceDelete();
-        return redirect()->route('admin.reviews.index')->with('success', 'Review permanently deleted.');
+        return redirect()->route('reviews.index')->with('success', 'Review permanently deleted.');
     }
 }
 

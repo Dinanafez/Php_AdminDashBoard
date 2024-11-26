@@ -9,7 +9,7 @@
         <div class="container-fluid my-2">
             <div class="row align-items-center">
                 <div class="col text-center">
-                    <h1 style="color:black">Users List</h1>
+                    <h1 style="color:black">Users</h1>
                 </div>
             </div>
         </div>
@@ -54,20 +54,20 @@
                 <td>{{ $user->phone }}</td>
                 <td>{{ $user->address }}</td>
                 <td>
-                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                     
                     @if ($user->deleted_at)
                         <a href="{{ route('users.restore', $user->id) }}" class="btn btn-success">Restore</a>
                         <form action="{{ route('users.forceDelete', $user->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete Permanently</button>
+                            <button type="submit" class="btn btn-danger" >Delete Permanently</button>
                         </form>
                     @else
                         <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                         </form>
                     @endif
                 </td>
@@ -76,5 +76,7 @@
         </tbody>
     </table>
 
-    {{ $users->links() }}
+    
+    @include('admin.layouts.footer')
+
 </div>

@@ -57,11 +57,11 @@
 
                                 <td>{{ $product->quantity }}</td>
                                 <td>
-									<a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-sm btn-warning">Edit</a>
+									<a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-sm btn-warning">  <i class="fas fa-edit"></i> </a>
 									<form action="{{ route('product.destroy', ['product' => $product->id]) }}" method="post" id="delete_form_{{ $product->id }}" class="d-inline">
     @csrf
     @method('delete')
-    <a href="javascript:document.getElementById('delete_form_{{ $product->id }}').submit();" class="btn btn-sm btn-danger">Delete</a>
+    <a href="javascript:document.getElementById('delete_form_{{ $product->id }}').submit();" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i></a>
 </form>
 
                                 </td>
@@ -82,7 +82,7 @@
             </div>
         </div>
     </section>
-</div> c
+</div> 
 <!-- Footer -->
 @include('admin.layouts.footer')
 

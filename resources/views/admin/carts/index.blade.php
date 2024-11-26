@@ -50,11 +50,11 @@
                     <td>{{ $cart->quantity }}</td>
                     <td>
                         <a href="{{ route('carts.show', $cart->id) }}" class="btn btn-info">View</a>
-                        <a href="{{ route('carts.edit', $cart->id) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('carts.edit', $cart->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                         <form action="{{ route('carts.destroy', $cart->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            <button class="btn btn-danger" onclick="return confirm('Are you sure?')"> <i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

@@ -1,5 +1,3 @@
-@extends('layouts.admin')
-
 <html lang="en">
 @include('admin.layouts.navbar')
 @include('admin.layouts.sidebar')
@@ -10,7 +8,7 @@
         <div class="container-fluid my-2">
             <div class="row align-items-center">
                 <div class="col text-center">
-                    <h1 style="color:black">Cart List</h1>
+                    <h1 style="color:black"> Appoitment listList</h1>
                 </div>
             </div>
         </div>
@@ -53,12 +51,11 @@
                     <td>{{ $appointment->appointment_date }} {{ $appointment->appointment_time }}</td>
                     <td>{{ $appointment->phone }}</td>
                     <td>
-                        <a href="{{ route('admin.appointments.show', $appointment->id) }}" class="btn btn-info">View</a>
-                        <a href="{{ route('admin.appointments.edit', $appointment->id) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('admin.appointments.destroy', $appointment->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('appointments.edit', $appointment->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                        <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
@@ -66,5 +63,7 @@
         </tbody>
     </table>
 
-    {{ $appointments->links() }}
+
+    @include('admin.layouts.footer')
+
 </div>

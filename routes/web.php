@@ -28,6 +28,25 @@ use App\Http\Controllers\Admin\AppointmentController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/index', function () {
+    return view('userpages.index');
+});
+Route::get('/check', function () {
+    return view('userpages.checkout');
+});
+Route::get('/contactus', function () {
+    return view('userpages.contact');
+});
+Route::get('/single', function () {
+    return view('userpages.productsingle');
+});
+Route::get('/mm', function () {
+    return view('userpages.menu');
+});
+Route::get('/profile', function () {
+    return view('userpages.customer_profile');
+});
+
 Route::get('/dashborad', [AdminloginController::class,'dashborad'])->name('admin.dashborad');
 
 

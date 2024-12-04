@@ -1,7 +1,10 @@
+@include('admin.layouts.links')
 <!DOCTYPE html>
 <html lang="en">
 @include('admin.layouts.navbar')
 @include('admin.layouts.sidebar')
+
+
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

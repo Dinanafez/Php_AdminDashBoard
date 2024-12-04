@@ -1,6 +1,8 @@
 <html lang="en">
 @include('admin.layouts.navbar')
 @include('admin.layouts.sidebar')
+@include('admin.layouts.links')
+
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

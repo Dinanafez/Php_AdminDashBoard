@@ -2,6 +2,8 @@
 <html lang="en">
 @include('admin.layouts.navbar')
 @include('admin.layouts.sidebar')
+@include('admin.layouts.links')
+
 
 <!-- Check for Success Message -->
 @if (session('success'))

@@ -21,3 +21,20 @@
   margin-left: auto;
   margin-right: auto;
 }
+/* Navbar styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar {
+  padding: 10px 20px;
+  background-color: #007bff;
+}
+
+main {
+  margin-top: 60px; /* Adjust based on navbar height */
+}

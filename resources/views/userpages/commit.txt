@@ -1,0 +1,11 @@
+-user page customer profile 
+-wish list 
+-database
+-admin dashbord 
+-details page 
+-login registartion 
+- paypal 
+-chat bot
+-nav bar from dark mode to light mode 
+-order history
+login and registartion sessions 
